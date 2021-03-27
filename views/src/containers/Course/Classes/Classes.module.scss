@@ -1,0 +1,49 @@
+@import '../../../styles/variables.scss';
+
+.ClassList {
+    border: 1px solid $light-white;
+    cursor: pointer;
+    border-radius: 3px;
+    -webkit-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+    -moz-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+    box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+    .Class {
+        transition: 0.1s ease;
+        padding: 15px;
+        display: flex;
+        border-bottom: 1px solid $light-white;
+        p {
+            margin-right: 10px;
+            font-size: 17px;
+        }
+        h4 {
+            width: 100%;
+            text-align: center;
+            font-size: 17px;
+        }
+    }
+    .Class.Title {
+        background-color: $white;
+        h3 {
+            margin: 0;
+            font-size: 19px;
+        }
+    }
+
+    .Class:last-child {
+        border: none;
+    }
+
+    .Class:hover {
+        background-color: $primary-color;
+        p, h4 {
+            color: $white
+        }
+    }
+    .Class:hover:first-child {
+        background-color: $white;
+        p, h4 {
+            color: $black;
+        }
+    }
+}
