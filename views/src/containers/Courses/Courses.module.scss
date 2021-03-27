@@ -1,0 +1,26 @@
+
+
+.Courses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Box {
+        margin: 14px 5px;
+        flex-grow: 1;
+        div {
+            margin: 0 auto;
+         
+        }
+    }
+}
+
+
+@media only screen and(min-width: 600px) {
+
+    .Courses {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        
+    }
+}

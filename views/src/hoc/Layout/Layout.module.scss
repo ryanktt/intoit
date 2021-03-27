@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+section {
+    margin: 50px auto;
+    min-height: 800px;
+    width: $phone-width;
+}
+
+h1, h2, h3, h4, h5 {
+    color: $black;
+    width: fit-content;
+}
+
+h2 {
+    margin: 30px auto;
+}
+
+
+
+
+
+p {
+    color: $lightBlack;
+}
+
+.Title {
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 767px) {
+    section {
+        h2 {
+            margin: 0 0 20px 45px;
+        }
+        width: $tablet-width;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    section {
+        width: $desktop-width;
+    }
+}
+
+
+
+

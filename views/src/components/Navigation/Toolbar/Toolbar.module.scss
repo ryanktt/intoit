@@ -1,0 +1,23 @@
+.Toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .Logo {
+        width: 80px;
+        height: auto;
+    }
+    .Btn {
+        display: flex;
+        justify-content: center;
+        width: 63px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .Toolbar {
+        .Logo {
+            width: 90px;
+        }
+    }
+}
