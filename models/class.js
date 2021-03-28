@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-const Class = new Schema({
+const ClassSchema = new Schema({
     title: {type: String, required: true},
     description: {type: String, required: true}
-})
+}, {timestamps: true});
 
-
-module.exports = Class;
+module.exports = mongoose.model('class', ClassSchema);

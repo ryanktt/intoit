@@ -9,24 +9,18 @@
     background-color: $tertiary-color;
     transition:  0.1s ease;
     cursor: pointer;
-    a {
-        color: $white;
-        font-weight: bold;
-        font-size: 14px;
-    }
+    color: $white;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .Button:hover {
     padding: 8px 11px;
     background-color: $tertiary-dark;
-    a {
-        font-size: 15px;
-    }
+    font-size: 15px;
 }
 
 .Button:active {
     padding: 7px 10px;
-    a {
-        font-size: 14px;
-    }
+    font-size: 14px;
 }

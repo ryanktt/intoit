@@ -1,5 +1,6 @@
 @import '../../styles/variables.scss';
 
+
 section {
     margin: 50px auto;
     min-height: 800px;
@@ -15,8 +16,13 @@ h2 {
     margin: 30px auto;
 }
 
+hr { 
+    margin: 10px 0;
+    border: 1px solid $light-white;
+    border-bottom: 0px;
+}
 p {
-    color: $lightBlack;
+    color: $grey;
 }
 
 .Title {

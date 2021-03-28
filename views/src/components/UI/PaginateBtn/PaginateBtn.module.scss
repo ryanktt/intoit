@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+
+.PaginateBtn {
+    background-color: $white;
+    padding: 4px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bolder;
+    border: 2px solid $grey;
+    height: max-content;
+    i{
+        color: $grey;
+    }
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.PaginateBtn:hover {
+    background-color: $lightBlack;
+    i {
+        color: $light-white;
+    }
+}

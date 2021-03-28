@@ -1,0 +1,18 @@
+.Login {
+    h2 {
+        margin: 0 auto 20px auto;
+    }
+    a {
+        color: rgb(0, 70, 150);
+        font-size: 14px;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
+    .Input {
+        margin-bottom: 20px;
+    }
+    .Input:last-child {
+        margin: 0;
+    }
+}

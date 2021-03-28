@@ -7,7 +7,10 @@
     -webkit-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
     -moz-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
     box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+    max-width: 800px;
+    overflow: auto;
     .Class {
+       
         transition: 0.1s ease;
         padding: 15px;
         display: flex;
@@ -15,18 +18,20 @@
         p {
             margin-right: 10px;
             font-size: 17px;
+            height: max-content;
         }
         h4 {
             width: 100%;
             text-align: center;
-            font-size: 17px;
+            font-size: 16px;
+            margin: 0;
         }
     }
     .Class.Title {
         background-color: $white;
         h3 {
             margin: 0;
-            font-size: 19px;
+            font-size: 17px;
         }
     }
 
@@ -41,9 +46,25 @@
         }
     }
     .Class:hover:first-child {
+        cursor: initial;
         background-color: $white;
         p, h4 {
             color: $black;
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .ClassList {
+        .Class {
+            h4 {
+                font-size: 17px;
+            }
+        }
+        .Class.Title {
+            h3 {
+                font-size: 19px;
+            }
         }
     }
 }

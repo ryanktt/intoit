@@ -1,0 +1,11 @@
+.AddClass {
+    h2 {
+        margin: 0 auto 20px auto;
+    }
+    .Input {
+        margin-bottom: 20px;
+    }
+    .Input:last-child {
+        margin: 0;
+    }
+}

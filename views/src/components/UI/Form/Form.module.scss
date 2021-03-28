@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+.Form {
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid $light-grey;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+
+    -webkit-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+    -moz-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+    box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
+}

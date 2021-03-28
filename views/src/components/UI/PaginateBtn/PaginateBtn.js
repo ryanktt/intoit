@@ -2,9 +2,10 @@ import React from 'react';
 import style from './PaginateBtn.module.scss';
 
 const PaginateBtn = (props) => {
+    const {path, children} = props;
     return (
-        <button className={style.PaginateBtn}>
-            <a>{props.children}</a>
+        <button type='button' className={style.PaginateBtn}>
+            <a>{children}</a>
         </button>
     )
 }

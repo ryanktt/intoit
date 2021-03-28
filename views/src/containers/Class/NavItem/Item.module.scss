@@ -1,0 +1,12 @@
+@import '../../../styles/variables.scss';
+
+.Item {
+    padding: 7px 16px;
+    h3 {
+        color: $lightBlack;
+        font-size: 16px;
+    }
+}
+.Item.Active {
+    border-bottom: 2px solid $grey;
+}

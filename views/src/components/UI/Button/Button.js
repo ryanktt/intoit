@@ -1,12 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import style from './Button.module.scss';
 
 const Button = (props) => {
     const {type, path, children} = props;
     return (
-        <button className={style.Button}>
-            <a>{children}</a>
-        </button>
+        <Link to='/auth/login'><button className={style.Button}>
+        {children}</button>
+        </Link>
     )
 }
 
