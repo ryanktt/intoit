@@ -1,15 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import thunk from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import rootReducer from './redux/rootReducer'; 
+
+import setAuthToken from './utils/setAuthToken';
+
+
+const middleware = [thunk];
+
+const store = createStore(rootReducer, composeWithDevTools({trace: true})(applyMiddleware(...middleware)));
+
+// GET PREV AND CURRENT STATE AND CHECK IF TOKEN CHANGED TO SET THE NEW ONE
+let currentState = store.getState();
+
+store.subscribe(() => {
+  const prevState = currentState;
+  currentState = store.getState();
+
+  if(prevState.auth.token !== currentState.auth.token) {
+    const token =  currentState.auth.token;
+    setAuthToken(token);
+  }
+})
 
 ReactDOM.render(
     <React.StrictMode>
-      <BrowserRouter>
-       <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter> 
+          <App />
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode>,
   document.getElementById('root')
 );

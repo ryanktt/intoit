@@ -1,12 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import style from './Course.module.scss';
 
-const Course = () => {
+const Course = (props) => {
+    const {data} = props;
+    const {title, image, user, _id} = data;
     return (
         <div className={style.Course}>
-            <img src={'https://cpr.heart.org/-/media/cpr-images/find-a-course/aha-ian-3940-hires-find-a-course.jpg?h=761&la=en&mw=1140&w=1140&hash=A683D50F109A61B243608393ABFA667D51CE1392'}/>
-            <h4>Título do curso</h4>
-            <p>Nome do Instrutor</p>
+            <Link to={`/curso/${_id}`}><img src={image}/></Link>
+            <Link to={`/curso/${_id}`}><h4>{title}</h4></Link>
+            <p>{user.name}</p>
 
         </div> 
     )

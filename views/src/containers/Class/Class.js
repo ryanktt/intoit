@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
 import style from './Class.module.scss';
 import PaginateBtn from '../../components/UI/PaginateBtn/PaginateBtn';
 import About from './Sections/About';
 import Attachments from './Sections/Attachments';
 import Item from './NavItem/Item';
 import Classes from './Sections/Classes';
+import {getCourse} from '../../redux/actions/public';
 
 const Class = () => {
     const [section, setSection] = useState(<About/>);
@@ -27,8 +29,8 @@ const Class = () => {
     const items  = itemList.map(item => {
         const active = `#${item.value}` === window.location.hash;
         if(item.value === 'aulas') {
-            return <div className={style.ClassesItem}>
-                <Item  key={item.value} path={item.value} active={active}>{item.name}</Item>
+            return <div key={item.value} className={style.ClassesItem}>
+                <Item  path={item.value} active={active}>{item.name}</Item>
             </div>
         }
         return <Item  key={item.value} path={item.value} active={active}>{item.name}</Item>
@@ -44,11 +46,11 @@ const Class = () => {
                     frameborder="0"/>
                 </div>
                 <div className={style.Navigation}>
-                    <PaginateBtn><i class="fas fa-chevron-left"></i></PaginateBtn>
+                    <PaginateBtn><i className="fas fa-chevron-left"></i></PaginateBtn>
                     <div className={style.Items}>
                         {items}
                     </div>
-                    <PaginateBtn><i class="fas fa-chevron-right"></i></PaginateBtn>
+                    <PaginateBtn><i className="fas fa-chevron-right"></i></PaginateBtn>
                 </div>
                 <div  className={style.Sections}>
                     {section}
@@ -65,4 +67,16 @@ const Class = () => {
     )
 }
 
-export default Class;
+const mapStateToProps = state => {
+    return {
+        course: state.public.course
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCourse: (courseId) => dispatch(getCourse(courseId)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Class);
