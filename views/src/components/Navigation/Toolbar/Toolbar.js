@@ -6,12 +6,15 @@ import Button from '../../UI/Button/Button';
 
 
 const Toolbar = (props) => {
-    const {isAuthenticated, logout} = props;
+    const {isAuthenticated, logout, history} = props;
 
     let btn = <div className={style.Btn}><Button path='/auth/login'>Login</Button></div>
 
     if(isAuthenticated) {
-        btn = <div className={style.Btn}><Button button type='button' clicked={logout}>Logout</Button></div>
+        btn = <div className={style.NavItems}>
+                <Link to='/user/cursos'><h3>Meus Cursos</h3></Link>
+                <h3 onClick={() =>{logout(); history.push('/')}}>Sair</h3>
+            </div>
     }
 
     return (

@@ -1,17 +1,17 @@
-import {} from '../actionTypes';
+import {GET_USER_COURSES} from '../actionTypes';
 
 const initialState = {
-    
+    courses: null
 }
+const user = (state = initialState, action) => {
+    const {type, payload} = action;
 
-const auth = (state = initialState, action) => {
-    switch(action.type) {
-        case LOAD_USER: 
+    switch(type) {
+        case GET_USER_COURSES: 
             return {
                 ...state,
-                isAuthenticated: true,
-                user: action.payload,
-                loading: false
+                courses: payload
+                
         }
         
         default:
@@ -20,4 +20,4 @@ const auth = (state = initialState, action) => {
 
 }
 
-export default auth;
+export default user;

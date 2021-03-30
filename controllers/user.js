@@ -2,15 +2,10 @@ const User = require('../models/user');
 const Course = require('../models/course');
 const Class = require('../models/class');
 
-//file upload
-// const multer = require('multer');
-// const uuid = require('uuid').v4;
-// const upload = multer({dest: '../uploads/'});
-
 exports.getUser = async(req, res) => {
     try {
         const user = await User.findById(req.user.id).select('name');
-        console.log(user)
+
         res.json(user);
   
     } catch (err) {
@@ -20,11 +15,10 @@ exports.getUser = async(req, res) => {
 }
 
 exports.getCourses = async(req, res) => {
-    const userId = req.params.id;
 
     try {
-        const courses = await Course.find({user: userId});
-
+        const courses = await Course.find({'user.id': req.user.id}).sort({'createdAt': -1});
+     
         res.json(courses);
     } catch (err) {
         console.error(err);
@@ -52,6 +46,7 @@ exports.postAddClass =  async(req, res) => {
     try {
         //check if client is course's owner
         const course = await Course.findById(courseId);
+      
         if(course.user.id === req.user.id) {
             res.status(403). json('Não Autorizado.');
         }

@@ -3,6 +3,7 @@ import axios from '../../utils/axios';
 import {
     GET_COURSE,
     GET_COURSES,
+    GET_CLASS,
     LOADING,
     STOP_LOADING
 } from '../actionTypes';
@@ -40,3 +41,18 @@ export const getCourse = (courseId) => async dispatch => {
     }
 }
 
+export const getClass = (classId) => async dispatch => {
+    dispatch({ type: LOADING});
+    try { 
+        const lesson = await axios.get(`/class/${classId}`);
+    
+        dispatch({
+            type: GET_CLASS,
+            payload: lesson.data
+        })
+        dispatch({type: STOP_LOADING});
+    } catch(err) {
+        console.error(err)
+        dispatch({type: STOP_LOADING});
+    }
+}

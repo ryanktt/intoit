@@ -1,8 +1,9 @@
 import './App.scss';
 import React, {useEffect} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Courses from './containers/Courses/Courses';
+import UserCourses from './containers/User/Courses/Courses';
 import Layout from './hoc/Layout/Layout';
 import Course from './containers/Course/Course';
 import Class from './containers/Class/Class';
@@ -14,7 +15,7 @@ import {loadUser, logout} from './redux/actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 const App = (props) => {
-  const {isAuth, user} = props;
+  const {isAuth} = props;
   //CHECK FOR TOKEN IN LOCAL STORAGE
   useEffect(() => {
     if(localStorage.token) {
@@ -35,9 +36,13 @@ const App = (props) => {
       <Route path='/' exact component={Courses}/>
       <Route path='/curso/:id' exact component={Course}/>
       <Route path='/aula/:id' exact component={Class}/>
-      <Route path='/user/novo-curso' exact component={AddCourse}/>
-      <Route path='/user/nova-aula/:id' exact component={AddClass}/>
-      <Route path='/user/cursos' exact component={Courses}/>
+
+      {isAuth? <Switch>
+        <Route path='/user/novo-curso' exact component={AddCourse}/>
+        <Route path='/user/nova-aula/:id' exact component={AddClass}/>
+        <Route path='/user/cursos' exact component={UserCourses}/>
+      </Switch> : null}
+     
       <Route path='/auth/login' exact component={Login} />
       <Route path='/auth/registro' exact component={Signup} />
     </Layout>
@@ -46,7 +51,6 @@ const App = (props) => {
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.user,
     isAuth: state.auth.isAuthenticated
   }
 }

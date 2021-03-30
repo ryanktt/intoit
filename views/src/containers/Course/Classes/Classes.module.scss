@@ -46,6 +46,13 @@
             color: $white
         }
     }
+    .Class.Active {
+        background-color: $primary-color;
+        p, h4 {
+            color: $white
+        }
+    }
+
     .Class:hover:first-child {
         cursor: initial;
         background-color: $white;

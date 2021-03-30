@@ -6,21 +6,20 @@ import {getCourses} from '../../redux/actions/public';
 
 const Courses = (props) => {
     const {getCourses, courses} = props;
-    const [courseList, setCourseList] = useState([])
+    const [courseList, setCourseList] = useState([]);
+    useEffect(() => {
+        getCourses();
+    }, [])
 
     useEffect(() => {
-        if(!courses) {
-            getCourses();
-        } else {
-            setCourseList(courses.map(course => {
-                return <div className={style.Box}>
-                    <Course data={course}/>
-                    </div>
-            }))
-        }
-        
+        if(courses) setCourseList(courses.map(course => {
+            return <div className={style.Box}>
+                <Course data={course}/>
+                </div>
+        }))
 
     }, [courses]);
+
 
     return ( 
         <section>
@@ -35,7 +34,8 @@ const Courses = (props) => {
 
 const mapStateToProps = state => {
     return {
-        courses: state.public.courses
+        courses: state.public.courses,
+        isAuth: state.auth.isAuthenticated
     }
 }
 

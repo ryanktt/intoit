@@ -15,10 +15,11 @@ const AddCourse = (props) => {
     });
     const userId = match.params.id
     
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        addCourse(formData, userId);
-        history.push('/');
+        await addCourse(formData, userId);
+
+        history.push('/user/cursos');
     }
 
     const onChange = (e) => {

@@ -5,26 +5,87 @@ import PaginateBtn from '../../components/UI/PaginateBtn/PaginateBtn';
 import About from './Sections/About';
 import Attachments from './Sections/Attachments';
 import Item from './NavItem/Item';
-import Classes from './Sections/Classes';
-import {getCourse} from '../../redux/actions/public';
+import Classes from '../Course/Classes/Classes';
+import {getCourse, getClass} from '../../redux/actions/public';
 
-const Class = () => {
-    const [section, setSection] = useState(<About/>);
-    const [itemList, setItemList] = useState([
-        {name:'Sobre', value:'sobre', section: <About/>},
-        {name:'Anexos', value:'anexos', section: <Attachments/>},
-        {name: 'Aulas', value: 'aulas', section: <div className={style.ClassList}><Classes/></div>}
+const Class = (props) => {
+    const {getCourse, getClass, classData, course, match} = props;
+    const [section, setSection] = useState([]);
+    const [itemList, setItemList] = useState([]);
+    const [pagination, setPagination] = useState({
+        currentPage: null,
+        previousPage: null,
+        nextPage: null
+    });
+    const classId = match.params.id;
 
-    ])
+    const updatePagination = () => {
+        const classIds = course.classes.map(data =>  data._id);
+        const currentPageIndex = classIds.indexOf(classId);
+
+        const currentPage = classIds[currentPageIndex];
+        const nextPage = classIds[currentPageIndex + 1];
+        const previousPage = classIds[currentPageIndex - 1];
+        setPagination({currentPage, nextPage, previousPage});
+    }
+
+    useEffect(() => {
+        if(classData && !course ) {
+            getCourse(classData.course);
+        }
+        if (course) updatePagination();
+       
+    }, [classData]);
+
+    useEffect(() => {
+        if(course) {
+            setSection(<About description={course.description}/>);
+            updatePagination();
+            
+        }
+    }, [course]);
+
+    console.log(pagination)
+
+    //pagination
+    let previousClass = <div></div>;
+    if(pagination.previousPage) previousClass = <PaginateBtn path={`/aula/${pagination.previousPage}`}>
+            <i className="fas fa-chevron-left"></i>
+        </PaginateBtn>;
+
+    let nextClass = <div></div>;
+    if(pagination.nextPage) nextClass = <PaginateBtn path={`/aula/${pagination.nextPage}`}>
+        <i className="fas fa-chevron-right"></i>
+        </PaginateBtn>;
+
+
+    
+    //updates class when page changes
+    useEffect(() => {
+        getClass(classId);  
+    }, [match.params.id]);
+
+    
+   
+    useEffect(() => {
+        if(classData) if(course) setItemList([
+            {name:'Sobre', value:'sobre', section: <About description={course.description}/>},
+            {name:'Anexos', value:'anexos', section: <Attachments/>},
+            {name: 'Aulas', value: 'aulas', section: <div className={style.ClassList}>{ course ? <Classes {...props} course={course}/> : null }</div>}
+        ]);
+    }, [classData, course]);
+
 
 
     useEffect(() => {
         itemList.map(item => {
             if (`#${item.value}` === window.location.hash) {
-                setSection(item.section)
+                setSection(item.section);
             }
         })
-    }, [window.location.hash])
+    }, [window.location.hash]);
+
+    //set which item has active style by hash location
 
     const items  = itemList.map(item => {
         const active = `#${item.value}` === window.location.hash;
@@ -36,46 +97,51 @@ const Class = () => {
         return <Item  key={item.value} path={item.value} active={active}>{item.name}</Item>
     });
 
-
     return (
-        <section className={style.Class}>
+        
+        (course && classData) ? <section className={style.Class}>
+            
             <div className={style.Main}>
                 <div className={style.Video}>
                     <iframe id="ytplayer" type="text/html" width="640" height="360"
-                    src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-                    frameborder="0"/>
+                    src={classData.video}
+                    frameBorder="0"/>
                 </div>
+
+                <h3>{classData.title}</h3>
+
                 <div className={style.Navigation}>
-                    <PaginateBtn><i className="fas fa-chevron-left"></i></PaginateBtn>
+                    {previousClass}
                     <div className={style.Items}>
                         {items}
                     </div>
-                    <PaginateBtn><i className="fas fa-chevron-right"></i></PaginateBtn>
+                    {nextClass}
                 </div>
+
                 <div  className={style.Sections}>
                     {section}
                 </div>
             </div>
 
             <div className={style.Side}>
-                <Classes/>
+                <Classes {...props} course={course}/>
             </div>
             
-            
-            
-        </section>
+        </section> : null
     )
 }
 
 const mapStateToProps = state => {
     return {
-        course: state.public.course
+        course: state.public.course,
+        classData: state.public.class
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         getCourse: (courseId) => dispatch(getCourse(courseId)),
+        getClass: (classId) => dispatch(getClass(classId))
     }
 }
 

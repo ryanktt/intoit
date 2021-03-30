@@ -21,9 +21,9 @@ const Login = (props) => {
         })
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
         e.preventDefault();
-        login(formData);  
+        await login(formData);  
         history.push('/');
     }
 

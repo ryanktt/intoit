@@ -1,5 +1,5 @@
 import api from '../../utils/axios';
-import axios from 'axios';
+
 
 import {
     GET_USER_COURSES,
@@ -42,7 +42,7 @@ export const addClass = (formData, courseId) => async dispatch => {
     }
 }
 
-export const getCourses = (userId) => async dispatch => {
+export const getCourses = async dispatch => {
     dispatch({ type: LOADING});
     try { 
         const courses = await api.get('/user/courses');

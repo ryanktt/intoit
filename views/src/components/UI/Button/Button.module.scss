@@ -1,7 +1,6 @@
 @import '../../../styles/variables.scss';
 
 .Button {
-    position: relative;
     border: none;
     border-radius: 3px;
     padding: 7px 10px;
@@ -15,12 +14,6 @@
 }
 
 .Button:hover {
-    padding: 8px 11px;
     background-color: $tertiary-dark;
-    font-size: 15px;
 }
 
-.Button:active {
-    padding: 7px 10px;
-    font-size: 14px;
-}

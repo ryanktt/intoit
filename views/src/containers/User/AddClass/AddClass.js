@@ -14,9 +14,9 @@ const AddClass = (props) => {
     });
     const courseId = match.params.id
     
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        addClass(formData, courseId);
+        await addClass(formData, courseId);
         history.push(`/curso/${courseId}`);
     }
 
@@ -25,7 +25,7 @@ const AddClass = (props) => {
             ...formData,
             [e.target.name]: e.target.value
         });
-        console.log(formData)
+ 
     }
 
     return (
@@ -49,7 +49,7 @@ const AddClass = (props) => {
                     />
                 </div>
                 
-                <Button button type='submit'>Novo Curso</Button>
+                <Button button type='submit'>Nova Aula</Button>
             </Form>
         </section>
     )

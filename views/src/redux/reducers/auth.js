@@ -14,7 +14,7 @@ const auth = (state = initialState, action) => {
                 ...state,
                 isAuthenticated: true,
                 user: action.payload,
-                loading: false
+
         }
         case LOGIN:
             return {
@@ -33,7 +33,7 @@ const auth = (state = initialState, action) => {
                 token: null,
                 isAuthenticated: false,
                 user: null,
-                loading: false
+   
             }
         default:
             return state   

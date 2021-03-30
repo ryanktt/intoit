@@ -1,4 +1,4 @@
-import { GET_COURSE, GET_COURSES } from '../actionTypes';
+import { GET_CLASS, GET_COURSE, GET_COURSES } from '../actionTypes';
 
 const initialState = {
     courses: null,
@@ -12,13 +12,19 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 courses: payload,
-                loading: false
+         
         }
         case GET_COURSE: 
             return {
                 ...state,
                 course: payload,
-                loading: false
+        
+            }
+        case GET_CLASS: 
+            return {
+                ...state,
+                class: payload,
+     
             }
         
         default:

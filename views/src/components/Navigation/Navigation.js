@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import style from './Navigation.module.scss';
 import Toolbar from './Toolbar/Toolbar';
@@ -8,7 +9,7 @@ const Navigation = (props) => {
     const {isAuth, logout} = props;
     return (
         <div className={style.Navigation}>
-            <Toolbar isAuthenticated={isAuth} logout={logout}/>
+            <Toolbar isAuthenticated={isAuth} {...props} logout={logout}/>
         </div>
     )
 }
@@ -24,4 +25,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navigation));

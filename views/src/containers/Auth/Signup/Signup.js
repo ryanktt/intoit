@@ -22,9 +22,9 @@ const Signup = (props) => {
         })
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
         e.preventDefault();
-        signup(formData);
+        await signup(formData);
         props.history.push('/auth/login');
         
     }
