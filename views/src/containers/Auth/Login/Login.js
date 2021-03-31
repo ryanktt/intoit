@@ -38,6 +38,7 @@ const Login = (props) => {
                     label='Email' 
                     placeholder='Digite seu email.' 
                     name='email'
+                    type='email'
                     changed={onChange}/>
                     
                 </div>

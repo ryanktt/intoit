@@ -7,14 +7,14 @@ const Classes = (props) => {
 
         const classes = course.classes.map((el, i) => {
             if(match) if(el._id === match.params.id) {
-                return <Link key={i} className={[style.Class, style.Active]. join(' ')}to={`/aula/${el._id}#about`}>
-                        <p>{i++}.</p>
+                return <Link key={i} className={[style.Class, style.Active]. join(' ')}to={`/aula/${el._id}#sobre`}>
+                        <p>{i+ 1}.</p>
                         <h4>{el.title}</h4>
                     </Link>
             }
 
-            return <Link key={i} className={style.Class}to={`/aula/${el._id}#about`}>
-                        <p>{i++}.</p>
+            return <Link key={i} className={style.Class}to={`/aula/${el._id}#sobre`}>
+                        <p>{i+1}.</p>
                         <h4>{el.title}</h4>
                     </Link>
         })

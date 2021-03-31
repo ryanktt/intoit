@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import style from './Class.module.scss';
 import PaginateBtn from '../../components/UI/PaginateBtn/PaginateBtn';
 import About from './Sections/About';
-import Attachments from './Sections/Attachments';
+import Content from './Sections/Content';
 import Item from './NavItem/Item';
 import Classes from '../Course/Classes/Classes';
 import {getCourse, getClass} from '../../redux/actions/public';
@@ -18,6 +18,7 @@ const Class = (props) => {
         nextPage: null
     });
     const classId = match.params.id;
+
 
     const updatePagination = () => {
         const classIds = course.classes.map(data =>  data._id);
@@ -38,23 +39,28 @@ const Class = (props) => {
     }, [classData]);
 
     useEffect(() => {
+        itemList.map(item => {
+            if (`#${item.value}` === window.location.hash) {
+                setSection(item.section);
+            }
+        })
+    }, [itemList])
+
+    useEffect(() => {
         if(course) {
-            setSection(<About description={course.description}/>);
             updatePagination();
             
         }
     }, [course]);
 
-    console.log(pagination)
-
     //pagination
     let previousClass = <div></div>;
-    if(pagination.previousPage) previousClass = <PaginateBtn path={`/aula/${pagination.previousPage}`}>
+    if(pagination.previousPage) previousClass = <PaginateBtn path={`/aula/${pagination.previousPage}#about`}>
             <i className="fas fa-chevron-left"></i>
         </PaginateBtn>;
 
     let nextClass = <div></div>;
-    if(pagination.nextPage) nextClass = <PaginateBtn path={`/aula/${pagination.nextPage}`}>
+    if(pagination.nextPage) nextClass = <PaginateBtn path={`/aula/${pagination.nextPage}#about`}>
         <i className="fas fa-chevron-right"></i>
         </PaginateBtn>;
 
@@ -70,9 +76,15 @@ const Class = (props) => {
     useEffect(() => {
         if(classData) if(course) setItemList([
             {name:'Sobre', value:'sobre', section: <About description={course.description}/>},
-            {name:'Anexos', value:'anexos', section: <Attachments/>},
+            {name:'Conteúdo', value:'conteudo', section: classData ? <Content content={classData.content}/> : null},
             {name: 'Aulas', value: 'aulas', section: <div className={style.ClassList}>{ course ? <Classes {...props} course={course}/> : null }</div>}
         ]);
+
+        itemList.map(item => {
+            if (`#${item.value}` === window.location.hash) {
+                setSection(item.section);
+            }
+        })
     }, [classData, course]);
 
 

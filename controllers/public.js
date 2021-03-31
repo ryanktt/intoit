@@ -1,5 +1,6 @@
 const Course = require('../models/course');
 const Class = require('../models/class');
+const Content = require('../models/content');
 
 exports.getCourses = async (req, res) => {
     try {
@@ -38,9 +39,12 @@ exports.getClass = async(req, res) => {
     const classId = req.params.id;
 
     try {
-        let lesson = await Class.findById(classId);
+        let [classData, content] = await  Promise.all([
+            Class.findById(classId).lean(),
+            Content.findOne({class: classId}).lean()
+        ]);
      
-        let url = lesson.video;
+        let url = classData.video;
 
         if(url.includes('https://youtu.be/')) {
             url = url.replace('https://youtu.be/', 'https://www.youtube.com/embed/')
@@ -56,10 +60,9 @@ exports.getClass = async(req, res) => {
         !url.includes('www.youtube.com')) {
             url =  'https://www.youtube.com/embed/';
         }
-        lesson.video = url;
-      
+        classData.video = url;
         
-        res.json(lesson);
+        res.json({...classData, content});
         
     } catch (err) {
         console.error(err);

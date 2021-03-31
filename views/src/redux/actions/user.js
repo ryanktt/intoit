@@ -27,6 +27,7 @@ export const addCourse = (formData) => async dispatch => {
 }
 
 export const addClass = (formData, courseId) => async dispatch => {
+
     dispatch({ type: LOADING});
     try { 
         await api.post(`/user/class/${courseId}`, formData);

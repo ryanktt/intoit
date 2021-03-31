@@ -13,10 +13,11 @@ export const loadUser = async dispatch => {
     dispatch({ type: LOADING});
     try {
         const user = await axios.get('/user');
-        return dispatch({
+        dispatch({
             type: LOAD_USER,
             payload: user.data
-        })
+        });
+        dispatch({type: STOP_LOADING});
     } catch (err) {
         dispatch({type: AUTH_ERROR})
         dispatch({type: STOP_LOADING});

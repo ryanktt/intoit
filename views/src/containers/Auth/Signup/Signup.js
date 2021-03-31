@@ -47,6 +47,7 @@ const Signup = (props) => {
                     <Input
                     label='Email' 
                     placeholder='Digite seu email.' 
+                    type='email'
                     name='email'
                     changed={onChange}/>
                     

@@ -9,12 +9,12 @@ section {
     width: $phone-width;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, label {
     color: $black;
     width: fit-content;
     font-family: 'Raleway', sans-serif;
 }
-a, p {
+a, p, textarea, input {
     font-family: 'Asap', sans-serif;
 }
 

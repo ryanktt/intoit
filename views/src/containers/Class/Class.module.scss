@@ -29,6 +29,11 @@
         font-size: 20px;
         margin: 15px auto 15px auto;
     }
+    h5 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
     .Navigation {
         border-radius: 3px;
         margin: 10px;
@@ -56,7 +61,6 @@
     margin: 0 auto;
     a {
         color: $primary-color;
-        text-decoration: underline;
         display: block;
         margin: 5px 0;
     }
@@ -69,6 +73,7 @@
     }
     p {
         font-size: 15px;
+        white-space: pre-line;
     }
 }
 

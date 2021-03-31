@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const Course = require('../models/course');
 const Class = require('../models/class');
+const Content = require('../models/content');
 
 exports.getUser = async(req, res) => {
     try {
@@ -40,7 +41,7 @@ exports.postAddCourse =  async(req, res) => {
 }
 
 exports.postAddClass =  async(req, res) => {
-    const {title, video} = req.body;
+    const {title, video, description, links} = req.body;
     const courseId = req.params.id;
 
     try {
@@ -52,13 +53,18 @@ exports.postAddClass =  async(req, res) => {
         }
 
         const lesson = new Class({title, video, course: courseId});
-        await lesson.save();
+        //check if it has content
+        let content
+        if(description || links.length > 0) {
+            content = new Content({class: lesson._id, description, links})
+            content.save();
+        }
 
         //add class to course's array of ids
         course.classes.unshift(lesson);
 
         await Promise.all([lesson.save(), course.save()]);
-        res.json(lesson);
+        res.json('Sucesso');
     } catch (err) {
         console.error(err);
         res.status(500).json('Erro de Servidor');

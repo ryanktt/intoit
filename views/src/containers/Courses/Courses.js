@@ -13,7 +13,7 @@ const Courses = (props) => {
 
     useEffect(() => {
         if(courses) setCourseList(courses.map(course => {
-            return <div className={style.Box}>
+            return <div key={course._id} className={style.Box}>
                 <Course data={course}/>
                 </div>
         }))

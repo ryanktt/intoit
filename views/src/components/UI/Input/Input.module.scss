@@ -1,23 +1,28 @@
 @import '../../../styles/variables.scss';
 
 .Input {
-
-    label {
+    width: 100%;
+    .Label {
+        margin-bottom: 5px;
+        label {
         font-weight: 500;
         font-size: 17px;
         color:  $lightBlack;
+
+        }
     }
     textarea, input {
-        margin-top: 5px;
         padding: 6px;
         display: block;
         width: 100%;
         resize: none;
+        font-size: 13px;
     }
 
     textarea {
         border-radius: 3px;
         border: 1px solid $light-grey;
+
     }
 
     input {

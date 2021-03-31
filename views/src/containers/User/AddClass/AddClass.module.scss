@@ -1,9 +1,52 @@
+@import '../../../styles/variables.scss';
+
 .AddClass {
     h2 {
         margin: 0 auto 20px auto;
     }
     .Input {
         margin-bottom: 20px;
+    }
+
+    .Btn {
+        width: fit-content;
+        margin: 15px auto;
+    }
+    small {
+        position: absolute;
+        right: -70%;
+        top: 10%;
+        font-size: 11px;
+        color: $grey;
+        
+    }
+    .Link {
+        display: flex;
+        margin-bottom: 5px;
+        .Input {
+            margin: 0;
+            width: 100%;
+            .FilledInput {
+                padding: 6px;
+                display: block;
+                width: 100%;
+                resize: none;
+                font-size: 13px;
+                border: 1px solid $light-grey;
+                border-radius: 3px;
+            }
+        }
+
+        .Input.Title {
+            width: 60%;
+            margin-right: 5px;
+        }
+
+        
+        .Btn {
+            margin: 0 !important;
+            margin-left: 5px !important;
+        }
     }
     
 }
