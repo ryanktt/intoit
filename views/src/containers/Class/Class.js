@@ -55,12 +55,12 @@ const Class = (props) => {
 
     //pagination
     let previousClass = <div></div>;
-    if(pagination.previousPage) previousClass = <PaginateBtn path={`/aula/${pagination.previousPage}#about`}>
+    if(pagination.previousPage) previousClass = <PaginateBtn path={`/aula/${pagination.previousPage}#sobre`}>
             <i className="fas fa-chevron-left"></i>
         </PaginateBtn>;
 
     let nextClass = <div></div>;
-    if(pagination.nextPage) nextClass = <PaginateBtn path={`/aula/${pagination.nextPage}#about`}>
+    if(pagination.nextPage) nextClass = <PaginateBtn path={`/aula/${pagination.nextPage}#sobre`}>
         <i className="fas fa-chevron-right"></i>
         </PaginateBtn>;
 
@@ -100,7 +100,9 @@ const Class = (props) => {
     //set which item has active style by hash location
 
     const items  = itemList.map(item => {
+
         const active = `#${item.value}` === window.location.hash;
+        console.log(window.location.hash, ' ', '#' + item.value)
         if(item.value === 'aulas') {
             return <div key={item.value} className={style.ClassesItem}>
                 <Item  path={item.value} active={active}>{item.name}</Item>
