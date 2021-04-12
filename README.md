@@ -19,11 +19,15 @@ Caminho: /course-app
 
 1. Crie um arquivo .env
 
+
 2. Adicione nele a seguinte chave:
-    + <b>REACT_APP_API_URL</b> - A URL local da sua aplicação react. Por padrão é http:<nolink>//localhost:3000
+    + <b>REACT_APP_API_URL</b> - A URL local da sua aplicação react.</br>
+    Por padrão é http:<nolink>//localhost:3000
+
 
 3. Edite o arquivo package.json da pasta views, adicionando o PORT que você escolheu pro servidor
-    Ex:
+
+    <b>Ex</b>:
         "proxy": "http://localhost:<PORT do servidor aqui>"
 
 
