@@ -11,7 +11,7 @@ Caminho: /course-app
 2. Adicione nele as seguintes chaves:
     + <b>MONGO_URI</b> - A URI do seu banco de dados MongoDB
     + <b>JWT_SECRET</b> - Segrêdo de sua preferência para o sistema de tokens
-    + <b>PORT</b> - Porte de sua preferência
+    + <b>PORT</b> - Port de sua preferência
 
 ### Cliente
 
@@ -25,11 +25,11 @@ Caminho: /course-app
     Por padrão é http:<nolink>//localhost:3000
 
 
-3. Edite o arquivo package.json da pasta views, adicionando o PORT que você escolheu pro servidor
+3. Edite o arquivo package.json da pasta views, adicionando o port que você escolheu pro servidor
 
     <b>Ex</b>:
 
-        "proxy": "http://localhost:<PORT do servidor aqui>"
+        "proxy": "http://localhost:<port do servidor aqui>"
 
 
 
