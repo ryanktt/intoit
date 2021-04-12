@@ -28,6 +28,7 @@ Caminho: /course-app
 3. Edite o arquivo package.json da pasta views, adicionando o PORT que você escolheu pro servidor
 
     <b>Ex</b>:
+
         "proxy": "http://localhost:<PORT do servidor aqui>"
 
 
