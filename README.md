@@ -25,7 +25,7 @@ Caminho: /course-app
     Por padrão é http:<nolink>//localhost:3000
 
 
-3. Edite o arquivo package.json da pasta views, adicionando o port que você escolheu pro servidor ao proxy
+3. Edite o arquivo package.json, adicionando o port que você escolheu pro servidor ao proxy
 
     <b>Ex</b>:
 
