@@ -2,7 +2,7 @@
 
 .ClassList {
     margin: 0 auto;
-    border: 1px solid $light-white;
+    border: 1px solid $dark-white;
     cursor: pointer;
     border-radius: 3px;
     -webkit-box-shadow: 6px 10px 10px -8px rgba(0,0,0,0.08);
@@ -15,7 +15,7 @@
         transition: 0.1s ease;
         padding: 15px;
         display: flex;
-        border-bottom: 1px solid $light-white;
+        border-bottom: 1px solid $dark-white;
         p {
             margin-right: 10px;
             font-size: 17px;

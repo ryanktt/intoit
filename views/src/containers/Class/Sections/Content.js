@@ -2,21 +2,22 @@ import React from 'react';
 
 
 const Content = (props) => {
+    const {content} = props;
     let linksJSX = null;
     let descriptionJSX = null;
 
-    if (props.content){
-        if (props.content.links) descriptionJSX = <>
+    if (content){
+        if (content.links) descriptionJSX = <>
                     <h5>Informações Adicionais</h5>
-                    <p style={{marginBottom: '15px'}}>{props.content.description}</p>
+                    <p style={{marginBottom: '15px'}}>{content.description}</p>
                     </> 
 
-        if(props.content.links.length> 0) {
+        if(content.links.length> 0) {
 
             linksJSX = <>
                     <h5>Links</h5>
-                    {props.content.links.map(link => {
-                        return<a key={link.key} target="_blank" href={link.url}>{link.title}</a>
+                    {content.links.map(link => {
+                        return<a key={link.key} target="_blank" rel="noreferrer" href={link.url}>{link.title}</a>
                     })}
             </>
         }
@@ -24,7 +25,7 @@ const Content = (props) => {
 
     return (
         
-            props.content ? <>
+            content ? <>
             <h4>Conteúdo</h4>
             {descriptionJSX}
             {linksJSX}</> : 

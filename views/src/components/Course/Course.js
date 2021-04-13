@@ -8,7 +8,7 @@ const Course = (props) => {
     const {title, image, user, _id} = data;
     return (
         <div className={style.Course}>
-            <Link to={`/curso/${_id}`}><img src={image}/></Link>
+            <Link to={`/curso/${_id}`}><img alt='' src={image}/></Link>
             <Link to={`/curso/${_id}`}><h4>{title}</h4></Link>
             <p>{user.name}</p>
             {admin ? <div className={style.Btn}>

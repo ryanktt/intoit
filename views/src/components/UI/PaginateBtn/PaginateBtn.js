@@ -6,7 +6,7 @@ const PaginateBtn = (props) => {
     const {path, children} = props;
     return (
         <Link to={path} type='button' className={style.PaginateBtn}>
-            <a>{children}</a>
+            {children}
         </Link>
     )
 }

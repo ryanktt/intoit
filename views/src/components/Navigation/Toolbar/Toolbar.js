@@ -19,7 +19,7 @@ const Toolbar = (props) => {
 
     return (
         <div className={style.Toolbar}>
-            <Link to='/'><img className={style.Logo} src={logo}/></Link>
+            <Link to='/'><img alt='' className={style.Logo} src={logo}/></Link>
             {btn}
         </div>
     )

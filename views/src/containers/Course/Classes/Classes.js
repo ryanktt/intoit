@@ -27,8 +27,6 @@ const Classes = (props) => {
                <h3>{course.title}</h3>
             </div>
             {classes}
-
-            
             
         </div>
     )

@@ -87,7 +87,7 @@ const AddClass = (props) => {
                 <div className={style.Input}>
                     <Input 
                     label='Título' 
-                    placeholder='Digite o um título para a aula.' 
+                    placeholder='Digite um título para a aula.' 
                     name='title'
                     changed={onChange}
                     />
@@ -108,7 +108,7 @@ const AddClass = (props) => {
                     <Input 
                     textarea
                     label='Informações Adicionais' 
-                    placeholder='Digite aqui informações adicionais sobre a  aula.' 
+                    placeholder='Digite aqui informações adicionais sobre a aula.' 
                     name='description'
                     changed={onChange}
                     />
@@ -126,7 +126,7 @@ const AddClass = (props) => {
                     </div>
                     <div className={style.Input}>
                         <Input  
-                            placeholder='Adicione URLs para conteúdo adicional externo.' 
+                            placeholder='Adicione a URL para conteúdo adicional externo.' 
                             name='url'
                             value={linkInf.url}
                             changed={onChangeLink}

@@ -92,15 +92,13 @@ const Class = (props) => {
     useEffect(() => {
         itemList.map(item => {
             if (`#${item.value}` === window.location.hash) {
-                setSection(item.section);
+                return setSection(item.section);
             }
         })
     }, [window.location.hash]);
 
-    //set which item has active style by hash location
-
+    //sets which item has active style by hash location
     const items  = itemList.map(item => {
-
         const active = `#${item.value}` === window.location.hash;
         console.log(window.location.hash, ' ', '#' + item.value)
         if(item.value === 'aulas') {
@@ -117,7 +115,7 @@ const Class = (props) => {
             
             <div className={style.Main}>
                 <div className={style.Video}>
-                    <iframe id="ytplayer" type="text/html" width="640" height="360"
+                    <iframe title="video" id="ytplayer" type="text/html" width="640" height="360"
                     src={classData.video}
                     frameBorder="0"/>
                 </div>
