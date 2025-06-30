@@ -1,4 +1,4 @@
-# Course App
+# IntoIT
 
 ## Description
 Course App is a full-stack web application that allows users to create, manage, and enroll in online courses. The app supports user authentication, course and class management, and displays course content through a modern and responsive interface. Users can sign up, log in, create courses, add classes to courses, and view course/class content. The backend is built using Node.js, Express, and MongoDB, while the frontend is built with React and Redux.
