@@ -1,50 +1,86 @@
-# SETUP
+# Course App
 
-#### Como executar a aplicação localmente
+## Description
+Course App is a full-stack web application that allows users to create, manage, and enroll in online courses. The app supports user authentication, course and class management, and displays course content through a modern and responsive interface. Users can sign up, log in, create courses, add classes to courses, and view course/class content. The backend is built using Node.js, Express, and MongoDB, while the frontend is built with React and Redux.
 
-### Servidor
+## Tech Stack
 
-<b>Caminho: /course-app</b>
+**Backend**:
+- Node.js
+- Express.js
+- MongoDB (Mongoose ORM)
+- JWT for authentication
+- bcrypt for password hashing
+- Multer (for file uploads, if needed)
+- dotenv (for environment variable management)
 
-1. Crie um arquivo .env
+**Frontend**:
+- React (with Hooks)
+- Redux (with redux-thunk for async actions)
+- React Router
+- Axios (for HTTP requests)
+- SCSS (modular styles)
 
-2. Adicione nele as seguintes chaves:
-    + <b>MONGO_URI</b> - A URI do seu banco de dados MongoDB
-    + <b>JWT_SECRET</b> - Segrêdo de sua preferência para o sistema de tokens
-    + <b>PORT</b> - Port de sua preferência
+**Testing**:
+- @testing-library/react
+- @testing-library/jest-dom
 
-### Cliente
+**Other**:
+- CORS
+- Procfile for deployment
 
-<b>Caminho: /course-app/views</b>
+## Setup Guide
 
-1. Crie um arquivo .env
+### 1. Clone the repository
+```sh
+git clone <repo_url>
+cd desafio-engaged
+```
 
+### 2. Backend Setup
+- Go to the root directory:
+  ```sh
+  cd desafio-engaged
+  ```
+- Create a `.env` file and add the following variables:
+  ```env
+  MONGO_URI=<your_mongo_uri>
+  JWT_SECRET=<your_jwt_secret>
+  PORT=<your_preferred_port>
+  ```
+- Install backend dependencies:
+  ```sh
+  npm install
+  ```
+- Start the backend server:
+  ```sh
+  npm run server
+  # Or for production:
+  npm start
+  ```
 
-2. Adicione nele a seguinte chave:
-    + <b>REACT_APP_API_URL</b> - A URL local da sua aplicação react.</br>
-    Por padrão é http://<nolink>localhost:3000
+### 3. Frontend Setup
+- Go to the client directory:
+  ```sh
+  cd views
+  ```
+- Create a `.env` file and add:
+  ```env
+  REACT_APP_API_URL=<your_backend_url>
+  ```
+- Install frontend dependencies:
+  ```sh
+  npm install
+  ```
+- Start the React app:
+  ```sh
+  npm start
+  ```
 
+### 4. Usage
+- Access the app at `http://localhost:<PORT>` (by default, React runs on 3000, backend on 5000 or as per your .env)
+- Sign up, log in, and start creating or enrolling in courses!
 
-3. Edite o arquivo package.json, adicionando o port que você escolheu pro servidor ao proxy
+---
 
-    <b>Exemplo</b>:
-
-        "proxy": "http://localhost:<port do servidor aqui>"
-
-
-
-### Execução
-
-<b>Caminho: /course-app</b>
-
-Para iniciar execute o comando:
-
-    npm install
-
-e os seguintes comandos em terminais diferentes:
-
-    npm run server
-    npm run client
-
-
-Aproveite ^^
+For more information, see the code comments and structure.
